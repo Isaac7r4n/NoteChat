@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Label } from "../label";
+import { Label } from "@/components/ui/label";
 import {z} from 'zod';
 import {useForm} from 'react-hook-form';
 import {zodResolver} from '@hookform/resolvers/zod';
@@ -56,6 +56,14 @@ export function SignupForm({
               <div className="grid grid-cols-2 gap-3">
 
                 <div className="space-y-2">
+                  <Label htmlFor="firstname" className="block text-sm">
+                    First Name
+                  </Label>
+                  <Input type="text" id="firstname" {...register("firstname")}/>
+                  {errors.firstname && (<p className="text-destructive text-sm">{errors.firstname.message}</p>)}
+                </div>
+
+                <div className="space-y-2">
                   <Label htmlFor="lastname" className="block text-sm">
                     Last Name
                   </Label>
@@ -63,13 +71,6 @@ export function SignupForm({
                   {errors.lastname && (<p className="text-destructive text-sm">{errors.lastname.message}</p>)}
                 </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="firstname" className="block text-sm">
-                    First Name
-                  </Label>
-                  <Input type="text" id="firstname" {...register("firstname")}/>
-                  {errors.firstname && (<p className="text-destructive text-sm">{errors.firstname.message}</p>)}
-                </div>
               </div>
 
               {/*username*/}

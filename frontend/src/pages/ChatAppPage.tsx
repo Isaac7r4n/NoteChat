@@ -1,30 +1,17 @@
-import Logout from "@/components/ui/auth/Logout";
-import { Button } from "@/components/ui/button";
-import { useAuthStore } from "@/stores/useAuthStore";
-import api from "@/lib/axios";
-import {toast} from "sonner";
+import ChatWindowLayout from "@/components/chat/ChatWindowLayout";
+import { AppSidebar } from "@/components/sidebar/app-sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 
 const ChatAppPage = () => {
+  return (
+    <SidebarProvider>
+      <AppSidebar />
 
-    const user = useAuthStore((s) => s.user);
-
-    const handleOnClick = async () => {
-        try {
-            await api.get('/users/test', {withCredentials: true});
-            toast.success('good');
-        } catch (error) {
-            toast.error('failed');
-            console.error(error);
-        }
-    }
-    return (
-        <div>
-            {user?.username}
-            <Logout/>
-
-            <Button onClick={handleOnClick}>test</Button>
-        </div>
-    );
+      <div className="flex h-screen w-full p-2">
+        <ChatWindowLayout />
+      </div>
+    </SidebarProvider>
+  );
 };
 
 export default ChatAppPage;
