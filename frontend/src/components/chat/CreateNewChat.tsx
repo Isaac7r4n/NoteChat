@@ -1,8 +1,8 @@
 import { useFriendStore } from "@/stores/useFriendStore";
-import { Card } from "../ui/card";
-import { Dialog, DialogTrigger } from "../ui/dialog";
+import { Card } from "@/components/ui/card";
+import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { MessageCircle } from "lucide-react";
-import FriendListModal from "../createNewChat/FriendListModal";
+import FriendListModal from "@/components/createNewChat/FriendListModal";
 
 const CreateNewChat = () => {
   const { getFriends } = useFriendStore();
@@ -24,7 +24,7 @@ const CreateNewChat = () => {
                 <MessageCircle className="size-4 text-white" />
               </div>
               <span className="text-sm font-medium capitalize">
-                gửi tin nhắn mới
+                New message
               </span>
             </div>
           </DialogTrigger>

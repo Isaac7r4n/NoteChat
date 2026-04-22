@@ -9,8 +9,6 @@ import conversationRoute from "./routes/conversationRoute.js";
 import cookieParser from "cookie-parser";
 import { protectedRoute } from "./middlewares/authMiddleware.js";
 import cors from "cors";
-import swaggerUi from "swagger-ui-express";
-import fs from "fs";
 import { app, server } from "./socket/index.js";
 import { v2 as cloudinary } from "cloudinary";
 
@@ -31,11 +29,6 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-// swagger
-const swaggerDocument = JSON.parse(fs.readFileSync("./src/swagger.json", "utf8"));
-
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
 // public routes
 app.use("/api/auth", authRoute);
 
@@ -48,6 +41,6 @@ app.use("/api/conversations", conversationRoute);
 
 connectDB().then(() => {
   server.listen(PORT, () => {
-    console.log(`server bắt đầu trên cổng ${PORT}`);
+    console.log(`Server started on port ${PORT}`);
   });
 });

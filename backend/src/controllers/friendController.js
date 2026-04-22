@@ -8,10 +8,10 @@ export const sendFriendRequest = async (req, res) => {
 
     const from = req.user._id;
 
-    if (from === to) {
-      return res
-        .status(400)
-        .json({ message: "You cannot send a friend request to yourself" });
+    if (from.toString() === to) {
+    return res
+      .status(400)
+      .json({ message: "You cannot send a friend request to yourself" });
     }
 
     const userExists = await User.exists({ _id: to });

@@ -82,13 +82,12 @@ export const signIn = async (req, res) => {
             return res.status(401).json({message: 'username or password is incorrect'});
         }
 
-        //if correct, create accessTocken with JWT
+        // if correct, create accessToken with JWT
         const accessToken = jwt.sign({userId: user._id}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: ACCESS_TOKEN_TTL});
 
-        //create refresh token
         const refreshToken = crypto.randomBytes(64).toString('hex');
 
-        //create new session to save refresh token (so that it can be deleted in demand in case of stonen instead of waiting for it to be expired)
+        //create new session to save refresh token (so that it can be deleted when need in case of stolen instead of waiting for it to be expired)
         await Session.create({
             userId: user._id, 
             refreshToken,

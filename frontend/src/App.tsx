@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 import SignInPage from "./pages/SignInPage";
 import ChatAppPage from "./pages/ChatAppPage";
 import { Toaster } from "sonner";
@@ -11,7 +11,7 @@ import { useSocketStore } from "./stores/useSocketStore";
 
 function App() {
   const { isDark, setTheme } = useThemeStore();
-  const { accessToken } = useAuthStore();
+  const { accessToken, user } = useAuthStore();
   const { connectSocket, disconnectSocket } = useSocketStore();
 
   useEffect(() => {
@@ -34,14 +34,14 @@ function App() {
           {/* public routes */}
           <Route
             path="/signin"
-            element={<SignInPage />}
+            element={user ? <Navigate to="/" replace /> : <SignInPage />}
           />
           <Route
             path="/signup"
-            element={<SignUpPage />}
+            element={user ? <Navigate to="/" replace /> : <SignUpPage />}
           />
 
-          {/* protectect routes */}
+          {/* protected routes */}
           <Route element={<ProtectedRoute />}>
             <Route
               path="/"

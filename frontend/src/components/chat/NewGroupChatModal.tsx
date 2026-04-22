@@ -13,7 +13,7 @@ import { UserPlus, Users } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import type { Friend } from "@/types/user";
-import IniviteSuggestionList from "@/components/newGroupChat/IniviteSuggestionList";
+import IniviteSuggestionList from "@/components/newGroupChat/InviteSuggestionList";
 import SelectedUsersList from "@/components/newGroupChat/SelectedUsersList";
 import { toast } from "sonner";
 import { useChatStore } from "@/stores/useChatStore";

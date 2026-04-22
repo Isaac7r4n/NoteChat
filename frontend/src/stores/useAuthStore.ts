@@ -31,7 +31,7 @@ export const useAuthStore = create<AuthState>()(
         try {
           set({ loading: true });
           await authService.signUp(username, password, email, firstName, lastName);
-          toast.success("Account created successfully! Redirecting to sign in.");
+          toast.success("Account created successfully! Please go to the sign in page to log in.");
         } catch (error) {
           console.error(error);
           toast.error("Sign up failed. Please try again.");

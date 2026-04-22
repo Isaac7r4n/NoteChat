@@ -1,5 +1,6 @@
 import { SidebarInset } from "../ui/sidebar";
 import ChatWindowHeader from "./ChatWindowHeader";
+import { MessageCircle } from "lucide-react";
 
 const ChatWelcomeScreen = () => {
   return (
@@ -7,8 +8,8 @@ const ChatWelcomeScreen = () => {
       <ChatWindowHeader />
       <div className="flex bg-primary-foreground rounded-2xl flex-1 items-center justify-center">
         <div className="text-center">
-          <div className="size-24 mx-auto mb-6 bg-gradient-chat rounded-full flex items-center justify-center shadow-glow pulse-ring">
-            <span className="text-3xl">💬</span>
+          <div className="size-20 mx-auto mb-6 bg-gradient-chat rounded-full flex items-center justify-center shadow-soft">
+            <MessageCircle className="size-8 text-white" />
           </div>
           <h2 className="text-2xl font-bold mb-2 bg-gradient-chat bg-clip-text text-transparent">
             Welcome to NoteChat!
